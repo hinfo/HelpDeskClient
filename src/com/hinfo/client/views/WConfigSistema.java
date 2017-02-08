@@ -127,6 +127,11 @@ public class WConfigSistema extends javax.swing.JFrame {
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.setPreferredSize(new java.awt.Dimension(105, 25));
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         jButtonSair.setText("Sair");
         jButtonSair.setMaximumSize(new java.awt.Dimension(105, 25));
@@ -202,6 +207,10 @@ public class WConfigSistema extends javax.swing.JFrame {
          jTextFieldConfigServer.setText("Não está selecionado.");
         }
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**
      * @param args the command line arguments

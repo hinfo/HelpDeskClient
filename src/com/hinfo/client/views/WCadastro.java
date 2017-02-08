@@ -7,6 +7,8 @@ package com.hinfo.client.views;
 
 import com.hinfo.beans.Posts;
 import com.hinfo.beans.Tag;
+import static com.hinfo.client.views.TelaPrincipal.porta;
+import static com.hinfo.client.views.TelaPrincipal.url;
 import com.hinfo.main.ConectaBD;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -42,7 +44,7 @@ public class WCadastro extends javax.swing.JInternalFrame {
         
     }
      public void popCombo() throws RemoteException, NotBoundException{
-        Registry myRegistry = LocateRegistry.getRegistry("localhost", 1099);
+        Registry myRegistry = LocateRegistry.getRegistry(url, Integer.parseInt(porta));
         ConectaBD obj = (ConectaBD) myRegistry.lookup("servico");
         ArrayList lista = new ArrayList();
         try {
@@ -126,7 +128,7 @@ public class WCadastro extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonEdit.setText("Editar");
+        jButtonEdit.setText("Novo");
         jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditActionPerformed(evt);
@@ -214,21 +216,27 @@ public class WCadastro extends javax.swing.JInternalFrame {
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
             // TODO add your handling code here:
-
+            String retorno;
             Posts post = new Posts();
             Tag tag = new Tag();
             post.setResumo(jTextFieldResumo.getText());
             post.setTags((jComboBoxTags.getSelectedItem().toString()));
             post.setMensagem(jTextAreaMensagem.getText());
-            post.setAutor("Henrique");
-            Registry myRegistry = LocateRegistry.getRegistry("localhost", 1099);
+            post.setAutor("Icone");
+            Registry myRegistry = LocateRegistry.getRegistry(url, Integer.parseInt(porta));
             ConectaBD obj = (ConectaBD) myRegistry.lookup("servico");
             if (tagNova == true){
                 tag.setNome(jComboBoxTags.getSelectedItem().toString());
                 obj.adicionarTags(tag);
 
             }
-            obj.adicionarPost(post);
+            retorno = obj.adicionarPost(post);
+            
+            if (retorno.equals("OK")) {
+                JOptionPane.showMessageDialog(null,"Inserido com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null,"Erro ao salvar no Banco de dados");
+            }
 
             dispose();
 

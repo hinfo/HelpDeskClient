@@ -21,6 +21,7 @@ public class Posts implements Serializable{
     String tags;
     String autor;
     
+    
     public Posts(){
         
     }

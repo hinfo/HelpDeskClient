@@ -6,6 +6,8 @@
 package com.hinfo.client.views;
 
 import com.hinfo.beans.Posts;
+import static com.hinfo.client.views.TelaPrincipal.porta;
+import static com.hinfo.client.views.TelaPrincipal.url;
 import com.hinfo.main.ConectaBD;
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
@@ -67,7 +69,7 @@ public class WPesquisa extends javax.swing.JInternalFrame {
         rs.setVisible(true);
     }
      public void popCombo() throws RemoteException, NotBoundException{
-        Registry myRegistry = LocateRegistry.getRegistry("localhost", 1099);
+        Registry myRegistry = LocateRegistry.getRegistry(url, Integer.parseInt(porta));
         ConectaBD obj = (ConectaBD) myRegistry.lookup("servico");
         ArrayList lista = new ArrayList();
         try {
@@ -310,14 +312,14 @@ public class WPesquisa extends javax.swing.JInternalFrame {
         Registry myRegistry;
         ArrayList<Posts> lista = new ArrayList<>();
         try {
-            myRegistry = LocateRegistry.getRegistry("localhost", 1099);
+            myRegistry = LocateRegistry.getRegistry(url, Integer.parseInt(porta));
             ConectaBD obj = (ConectaBD) myRegistry.lookup("servico");
             String resumo = jTextFieldResumo.getText();
             String tag = jComboBoxTags.getSelectedItem().toString();
             lista =  obj.consultaPosts(resumo, tag);
             for (Posts post : lista){
                 preencherTabela(post);
-                preencherAreaTexto(post);
+               // preencherAreaTexto(post);
 //                System.out.println(" " + post.getMensagem());
             }
 

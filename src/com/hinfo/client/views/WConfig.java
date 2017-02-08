@@ -5,6 +5,16 @@
  */
 package com.hinfo.client.views;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
+
 
 
 /**
@@ -16,6 +26,34 @@ public class WConfig extends javax.swing.JInternalFrame {
     /**
      * Creates new form WConfig
      */
+    public static String url;
+    public static String porta;
+    
+    
+    public static void salvarConfig(String url, String porta){
+        //Cria um Objeto JSON
+		JSONObject jsonObject = new JSONObject();
+		
+		FileWriter writeFile = null;
+		
+		//Armazena dados em um Objeto JSON
+		jsonObject.put("url", url);
+		jsonObject.put("porta", porta);
+		
+		try{
+			writeFile = new FileWriter("config.json");
+			//Escreve no arquivo conteudo do Objeto JSON
+			writeFile.write(jsonObject.toJSONString());
+			writeFile.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		//Imprimne na Tela o Objeto JSON para vizualização
+		System.out.println(jsonObject);
+
+	}
     
     public void limpaCampos(){
         jTextFieldConfigServer.setText("");
@@ -23,6 +61,8 @@ public class WConfig extends javax.swing.JInternalFrame {
     }
     public WConfig() {
         initComponents();
+        jTextFieldConfigServer.setText(TelaPrincipal.url);
+        jTextFieldConfigPort.setText(TelaPrincipal.porta);
     }
 
     /**
@@ -203,7 +243,11 @@ public class WConfig extends javax.swing.JInternalFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // TODO add your handling code here:
-        
+        url = jTextFieldConfigServer.getText();
+        porta = jTextFieldConfigPort.getText();
+        salvarConfig(url, porta);
+        JOptionPane.showMessageDialog(null, "Configurações salvas!");
+        dispose();
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
 
@@ -218,7 +262,7 @@ public class WConfig extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanelBancoDados;
     private javax.swing.JPanel jPanelDadosServer;
     private javax.swing.JTabbedPane jTabbedPaneConfig;
-    private javax.swing.JTextField jTextFieldConfigPort;
-    private javax.swing.JTextField jTextFieldConfigServer;
+    public static javax.swing.JTextField jTextFieldConfigPort;
+    public static javax.swing.JTextField jTextFieldConfigServer;
     // End of variables declaration//GEN-END:variables
 }

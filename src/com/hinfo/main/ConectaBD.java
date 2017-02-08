@@ -22,7 +22,7 @@ public interface ConectaBD extends Remote{
     public Connection conectar() throws ClassNotFoundException, RemoteException;
     public void executaSQL(String sql) throws SQLException, RemoteException;
     public void consultarUsuarios(int id) throws RemoteException, ClassNotFoundException;
-    public void adicionarPost(Posts post) throws SQLException, RemoteException;
+    public String adicionarPost(Posts post) throws SQLException, RemoteException;
     public void desconectar(Connection conn) throws RemoteException;
     public void adicionarUsuario(Usuario usuario) throws SQLException, RemoteException;
     public void adicionarTags(Tag tag) throws SQLException, RemoteException;

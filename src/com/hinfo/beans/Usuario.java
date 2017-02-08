@@ -5,23 +5,27 @@
  */
 package com.hinfo.beans;
 
+import java.io.Serializable;
+
 /**
  *
  * @author henrique
  */
-public class Usuario  extends Perfil{
+public class Usuario{
+
     
-    public Usuario(){
-        super();
-    }
-    public Usuario(int id, String login, String senha) {
+    int id;
+    String nome;
+    String senha;
+
+    public Usuario(int id, String nome, String senha) {
         this.id = id;
-        this.login = login;
+        this.nome = nome;
         this.senha = senha;
     }
 
-    public Usuario(String login, String senha) {
-        this.login = login;
+    public Usuario(String nome, String senha) {
+        this.nome = nome;
         this.senha = senha;
     }
 
@@ -33,42 +37,14 @@ public class Usuario  extends Perfil{
         this.id = id;
     }
 
-    @Override
     public String getNome() {
         return nome;
     }
 
-    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    @Override
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    @Override
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-    
     public String getSenha() {
         return senha;
     }
