@@ -99,7 +99,7 @@
                       <Component id="jButtonPost" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButtonConfig" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="611" max="32767" attributes="0"/>
+                      <EmptySpace pref="599" max="32767" attributes="0"/>
                       <Component id="jButtonSair" min="-2" pref="97" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
@@ -139,7 +139,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="jLabelMsgServer" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelMsgServer" min="-2" pref="123" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -171,7 +171,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="15" green="4e" red="1e" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Mensagem Servidor"/>
+            <Property name="text" type="java.lang.String" value="Sem Conex&#xe3;o"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -199,6 +199,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDesktopPane" name="jDesktopPaneMain">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;&#xa;    ImageIcon icon = new ImageIcon(&#xa;            getClass().getResource(&quot;/img/bcg1.png&quot;));&#xa;    Image img = icon.getImage();&#xa;&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g){&#xa;        g.drawImage(img, 0, 0,getWidth(),getHeight(), this);&#xa;    }&#xa;}&#xa;"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">

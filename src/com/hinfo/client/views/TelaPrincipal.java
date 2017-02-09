@@ -20,6 +20,10 @@ import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import java.awt.Image;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -116,7 +120,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelMsgServer = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabelUsuario = new javax.swing.JLabel();
-        jDesktopPaneMain = new javax.swing.JDesktopPane();
+        jDesktopPaneMain = new javax.swing.JDesktopPane(){
+
+            ImageIcon icon = new ImageIcon(
+                getClass().getResource("/img/bcg1.png"));
+            Image img = icon.getImage();
+
+            @Override
+            public void paintComponent(Graphics g){
+                g.drawImage(img, 0, 0,getWidth(),getHeight(), this);
+            }
+        }
+        ;
         jButtonPesquisa = new javax.swing.JButton();
         jButtonPost = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
@@ -135,7 +150,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabelMsgServer.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
         jLabelMsgServer.setForeground(new java.awt.Color(30, 78, 21));
-        jLabelMsgServer.setText("Mensagem Servidor");
+        jLabelMsgServer.setText("Sem Conexão");
 
         jLabel1.setText("Usuário:");
 
@@ -149,7 +164,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabelMsgServer)
+                .addComponent(jLabelMsgServer, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -297,7 +312,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jButtonPost, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonConfig)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 611, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 599, Short.MAX_VALUE)
                         .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(158, 158, 158))
                     .addGroup(layout.createSequentialGroup()
